@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:insta_clone/page%20UI/login_screen.dart';
 import 'package:insta_clone/page%20UI/signup_screen.dart';
 import 'package:insta_clone/src/utils/colors.dart';
+
+import 'firebase_options.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +22,11 @@ Future main() async {
   //   await Firebase.initializeApp();
   //   print("ajdlklsdk");
   // }
-  Firebase.initializeApp();
+  print("before");
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  print("after");
 
   runApp(const MyApp());
 }
