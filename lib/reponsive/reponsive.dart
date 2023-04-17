@@ -12,6 +12,7 @@ class ReponsiveLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: non_constant_identifier_names
     return LayoutBuilder(builder: (context, Constraints) {
       if (Constraints.maxWidth > webScreenSize) {
         // web screen

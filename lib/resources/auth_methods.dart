@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:insta_clone/resources/models/users.dart' as model;
 import 'package:insta_clone/resources/storage_methods.dart';
 
-class Auth_Methods {
+class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 

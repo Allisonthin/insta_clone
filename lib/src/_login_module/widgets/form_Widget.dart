@@ -1,16 +1,15 @@
+// ignore_for_file: deprecated_member_use, file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:insta_clone/core/Color.dart';
-import 'package:insta_clone/resources/auth_methods.dart';
 import 'package:insta_clone/src/__signup_module/pages/signup_screen.dart';
-import 'package:insta_clone/src/home_module/pages/home.dart';
-import 'package:insta_clone/utils/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FormWidget extends StatefulWidget {
-  String email = "";
+  final ValueChanged<Map<String, dynamic>> onSaved;
 
-  FormWidget({super.key});
+  const FormWidget({super.key, required this.onSaved});
 
   @override
   State<FormWidget> createState() => _FormWidgetState();
@@ -30,18 +29,6 @@ class _FormWidgetState extends State<FormWidget> {
     setState(() {
       _isloading = true;
     });
-    String result = await Auth_Methods().loginUser(
-        email: _emailTextFieldController.text,
-        password: _passTextFieldController.text);
-
-    if (result == "successfully login") {
-      showShackBar(result, context);
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Home_Screen()));
-    } else {
-      showShackBar(result, context);
-    }
-
     setState(() {
       _isloading = false;
     });
@@ -71,7 +58,7 @@ class _FormWidgetState extends State<FormWidget> {
           //   flex: 2,
           // ),
           // svg image
-          SizedBox(
+          const SizedBox(
             height: 300,
           ),
           SvgPicture.asset(
@@ -93,11 +80,6 @@ class _FormWidgetState extends State<FormWidget> {
               // widget.email = _emailTextFieldController.text;
               return null;
             },
-            onSaved: (value) {
-              setState(() {
-                widget.email = value!;
-              });
-            },
             decoration: InputDecoration(
               border: inputborder,
               hintText: "enter your email",
@@ -114,7 +96,7 @@ class _FormWidgetState extends State<FormWidget> {
             obscureText: false,
           ),
 
-          SizedBox(
+          const SizedBox(
             height: 24,
           ),
 
@@ -142,7 +124,7 @@ class _FormWidgetState extends State<FormWidget> {
             obscureText: true,
           ),
 
-          SizedBox(
+          const SizedBox(
             height: 24,
           ),
 
@@ -157,27 +139,31 @@ class _FormWidgetState extends State<FormWidget> {
                     await SharedPreferences.getInstance();
                 prefs.setString("email", _emailTextFieldController.text);
                 loginUser();
+                widget.onSaved({
+                  "email": _emailTextFieldController.text,
+                  "password": _passTextFieldController.text
+                });
               }
             },
             child: Container(
               width: double.infinity,
               alignment: Alignment.center,
-              padding: EdgeInsets.symmetric(vertical: 12),
-              child: _isloading
-                  ? CircularProgressIndicator(
-                      color: Colors.white,
-                    )
-                  : Text("Log in"),
+              padding: const EdgeInsets.symmetric(vertical: 12),
               decoration: const ShapeDecoration(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(4)),
                 ),
                 color: blueColor,
               ),
+              child: _isloading
+                  ? const CircularProgressIndicator(
+                      color: Colors.white,
+                    )
+                  : const Text("Log in"),
             ),
           ),
 
-          SizedBox(
+          const SizedBox(
             height: 170,
           ),
 
@@ -185,15 +171,18 @@ class _FormWidgetState extends State<FormWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                child: Text(" Don't have an account?"),
-                padding: EdgeInsets.symmetric(vertical: 8),
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: const Text(" Don't have an account?"),
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Signup_Screen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SignupScreen()));
                 },
                 child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
                   child: const Text(
                     "Sign up",
                     style: TextStyle(
@@ -201,7 +190,6 @@ class _FormWidgetState extends State<FormWidget> {
                       color: Colors.red,
                     ),
                   ),
-                  padding: EdgeInsets.symmetric(vertical: 8),
                 ),
               ),
             ],

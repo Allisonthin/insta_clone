@@ -1,3 +1,1 @@
-import 'package:flutter/material.dart';
-
-final webScreenSize = 600;
+const webScreenSize = 600;

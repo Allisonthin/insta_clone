@@ -1,26 +1,47 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:insta_clone/src/_login_module/widgets/form_Widget.dart';
 
-class Login_Screen extends StatefulWidget {
-  const Login_Screen({super.key});
+import '../../../resources/auth_methods.dart';
+import '../../../utils/utils.dart';
+import '../../home_module/pages/home.dart';
+
+@RoutePage()
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<Login_Screen> createState() => _Login_ScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _Login_ScreenState extends State<Login_Screen> {
-  FormWidget form = new FormWidget();
-
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 32),
+        padding: const EdgeInsets.symmetric(horizontal: 32),
         width: double.infinity,
         child: SingleChildScrollView(
           child: Column(
             children: [
-              FormWidget(),
+              FormWidget(
+                onSaved: (value) async {
+                  await AuthMethods()
+                      .loginUser(
+                          email: value["email"], password: value["password"])
+                      .then((value) {
+                    if (value == "successfully login") {
+                      showShackBar(value, context);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeScreenPage()));
+                    } else {
+                      showShackBar(value, context);
+                    }
+                  });
+                },
+              ),
             ],
           ),
         ),

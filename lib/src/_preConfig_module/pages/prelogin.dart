@@ -1,27 +1,27 @@
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter/material.dart';
 import 'package:insta_clone/src/home_module/pages/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../_login_module/pages/login_screen.dart';
 
-class Pre_Login extends StatefulWidget {
-  const Pre_Login({super.key});
+class PreLogin extends StatefulWidget {
+  const PreLogin({super.key});
 
   @override
-  State<Pre_Login> createState() => _Pre_LoginState();
+  State<PreLogin> createState() => PreLoginState();
 }
 
-class _Pre_LoginState extends State<Pre_Login> {
+class PreLoginState extends State<PreLogin> {
   late String finalemail;
 
-  Widget currentwidget = Login_Screen();
+  Widget currentwidget = const LoginScreen();
   @override
   void initState() {
     dataValidation().whenComplete(() async {
+      // ignore: unnecessary_null_comparison
       finalemail == null
-          ? currentwidget = Login_Screen()
-          : currentwidget = Home_Screen();
+          ? currentwidget = const LoginScreen()
+          : currentwidget = const HomeScreenPage();
     });
 
     // TODO: implement initState
@@ -35,7 +35,7 @@ class _Pre_LoginState extends State<Pre_Login> {
     setState(() {
       finalemail = obtainedEmail!;
     });
-    print(finalemail);
+    // print(finalemail);
   }
 
   @override

@@ -17,10 +17,10 @@ class StorageMethods {
     // uploadTask ="Creates a task that performs an HTTP request for the specified URL request object and uploads the provided data"
     UploadTask uploadTask = ref.putData(file);
 
-    print("uploadtask is $uploadTask");
+    // print("uploadtask is $uploadTask");
 
     TaskSnapshot snap = await uploadTask;
-    print("snap is $snap");
+    // print("snap is $snap");
 
     String downloadUrl = await snap.ref.getDownloadURL();
 

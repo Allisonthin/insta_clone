@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:insta_clone/src/_preConfig_module/pages/prelogin.dart';
+import 'package:insta_clone/routes/Route_import.dart';
 import '../core/Color.dart';
 
-class MyApp extends StatefulWidget {
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
+class MyApp extends StatelessWidget {
+  final _approute = AppRouter();
 
-class _MyAppState extends State<MyApp> {
+  MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark()
           .copyWith(scaffoldBackgroundColor: mobileBackgroundColor),
-      home: Pre_Login(),
+      routerConfig: _approute.config(),
     );
   }
 }

@@ -1,21 +1,26 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:typed_data';
+
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:insta_clone/resources/auth_methods.dart';
-import 'package:insta_clone/src/_login_module/pages/login_screen.dart';
-import 'package:insta_clone/utils/utils.dart';
-import 'package:insta_clone/core/widgets/text_field_input.dart';
-import '../../../core/Color.dart';
 
-class Signup_Screen extends StatefulWidget {
-  Signup_Screen({super.key});
+import '../../../core/Color.dart';
+import '../../../resources/auth_methods.dart';
+import '../../../utils/utils.dart';
+import '../../_login_module/pages/login_screen.dart';
+
+@RoutePage()
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<Signup_Screen> createState() => _Signup_ScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _Signup_ScreenState extends State<Signup_Screen> {
+class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _emailTextFieldController =
       TextEditingController();
 
@@ -30,6 +35,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
   final _formkey = GlobalKey<FormState>();
   Uint8List? _image;
 
+  @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
@@ -47,7 +53,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
     return SafeArea(
       child: Scaffold(
         body: Container(
-          padding: EdgeInsets.symmetric(horizontal: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: SingleChildScrollView(
             child: Form(
               key: _formkey,
@@ -56,7 +62,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                 // crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   // shared freespace
-                  SizedBox(
+                  const SizedBox(
                     height: 70,
                   ),
                   // svg imagen : instagram image
@@ -213,7 +219,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                   InkWell(
                     onTap: () async {
                       if (_formkey.currentState!.validate()) {
-                        String result = await Auth_Methods().signUpUser(
+                        String result = await AuthMethods().signUpUser(
                           username: _usernameTextFieldController.text,
                           email: _emailTextFieldController.text,
                           password: _passTextFieldController.text,
@@ -227,14 +233,14 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                     child: Container(
                       width: double.infinity,
                       alignment: Alignment.center,
-                      padding: EdgeInsets.symmetric(vertical: 12),
-                      child: const Text("Sign Up"),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
                       decoration: const ShapeDecoration(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(4)),
                         ),
                         color: blueColor,
                       ),
+                      child: const Text("Sign Up"),
                     ),
                   ),
 
@@ -246,15 +252,15 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        child: Text(" Already have account?"),
-                        padding: EdgeInsets.symmetric(vertical: 8),
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: const Text(" Already have account?"),
                       ),
                       GestureDetector(
                         onTap: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Login_Screen()));
+                                  builder: (context) => const LoginScreen()));
                         },
                         child: Container(
                           // ignore: sort_child_properties_last
@@ -265,7 +271,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                               color: Colors.red,
                             ),
                           ),
-                          padding: EdgeInsets.symmetric(vertical: 8),
+                          padding: const EdgeInsets.symmetric(vertical: 8),
                         ),
                       ),
                     ],

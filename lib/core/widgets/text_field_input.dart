@@ -6,7 +6,8 @@ class TextFieldInput extends StatelessWidget {
   final String hintText;
   final TextInputType textInputType;
 
-  TextFieldInput(
+  // ignore: use_key_in_widget_constructors
+  const TextFieldInput(
       {Key? key,
       required this.hintText,
       this.ispass = false,
@@ -19,7 +20,9 @@ class TextFieldInput extends StatelessWidget {
         OutlineInputBorder(borderSide: Divider.createBorderSide(context));
     return TextFormField(
       controller: txteditingController,
-      validator: (value) {},
+      validator: (value) {
+        return null;
+      },
       decoration: InputDecoration(
         border: inputborder,
         hintText: hintText,

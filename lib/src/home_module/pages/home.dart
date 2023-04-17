@@ -1,30 +1,64 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:insta_clone/src/_login_module/pages/login_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Home_Screen extends StatefulWidget {
-  const Home_Screen({super.key});
+import '../../../core/Color.dart';
+import '../logic/uploadedReelList.dart';
+import '../widgets/Post.Suggest.dart';
+import '../widgets/Post.Title.dart';
+import '../widgets/post.widget.dart';
+
+@RoutePage()
+class HomeScreenPage extends StatefulWidget {
+  const HomeScreenPage({super.key});
 
   @override
-  State<Home_Screen> createState() => _Home_ScreenState();
+  State<HomeScreenPage> createState() => _HomeScreenPageState();
 }
 
-class _Home_ScreenState extends State<Home_Screen> {
+class _HomeScreenPageState extends State<HomeScreenPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("home page")),
-      body: Column(
-        children: [
-          ElevatedButton(
-              onPressed: () async {
-                SharedPreferences pre = await SharedPreferences.getInstance();
-                pre.remove("email");
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Login_Screen()));
-              },
-              child: Text("sign out"))
+      appBar: AppBar(
+        backgroundColor: mobileBackgroundColor,
+        title: const TitleWidget(),
+        actions: [
+          IconButton(
+            icon: const FaIcon(FontAwesomeIcons.heart),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: const FaIcon(FontAwesomeIcons.facebookMessenger),
+            onPressed: () {},
+          ),
         ],
+      ),
+      // body: const Text("kajfldskf")
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: SingleChildScrollView(
+          child: Column(
+            children: const [
+              ReelList(),
+              SizedBox(
+                height: 10,
+              ),
+              PostWidget(),
+              SizedBox(
+                height: 10,
+              ),
+              SuggestedReel(),
+              SizedBox(
+                height: 10,
+              ),
+              PostWidget(),
+              SizedBox(
+                height: 10,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
