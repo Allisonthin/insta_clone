@@ -1,0 +1,39 @@
+{
+    "data": [
+        {
+            "name": "tia",
+            "likes": 15,
+            "image_url": "https://source.unsplash.com/random/?nature"
+        },
+        {
+            "name": "nel",
+            "likes": 11,
+            "image_url": "https://source.unsplash.com/random/?nature"
+        },
+        {
+            "name": "tom",
+            "likes": 5,
+            "image_url": "https://source.unsplash.com/random/?nature"
+        },
+        {
+            "name": "tim",
+            "likes": 7,
+            "image_url": "https://source.unsplash.com/random/?nature"
+        },
+        {
+            "name": "ram",
+            "likes": 15,
+            "image_url": "https://source.unsplash.com/random/?nature"
+        },
+        {
+            "name": "boy",
+            "likes": 15,
+            "image_url": "https://source.unsplash.com/random/?nature"
+        },
+        {
+            "name": "jeena",
+            "likes": 15,
+            "image_url": "https://source.unsplash.com/random/?nature"
+        }
+    ]
+}

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:insta_clone/routes/Route_import.dart';
-import '../core/Color.dart';
+import 'package:insta_clone/core/Color.dart';
+
+import '../routes/Route_import.dart';
+import '../src/Reels_Modules/pages/WatchReel.dart';
 
 class MyApp extends StatelessWidget {
   final _approute = AppRouter();
@@ -14,5 +16,13 @@ class MyApp extends StatelessWidget {
           .copyWith(scaffoldBackgroundColor: mobileBackgroundColor),
       routerConfig: _approute.config(),
     );
+
+    // return MaterialApp(
+    //   debugShowCheckedModeBanner: false,
+    //   // theme: ThemeData,
+    //   themeMode: ThemeMode.dark,
+    //   darkTheme: ThemeData.dark(),
+    //   home: WatchReelPage(),
+    // );
   }
 }

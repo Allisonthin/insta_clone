@@ -1,16 +1,18 @@
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter/material.dart';
 
-class ContentScreen extends StatefulWidget {
-  const ContentScreen({super.key});
+class ContentScreen extends StatelessWidget {
+  String src;
+  ContentScreen({super.key, required this.src});
 
-  @override
-  State<ContentScreen> createState() => _ContentScreenState();
-}
-
-class _ContentScreenState extends State<ContentScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Stack(
+      children: [
+        Image.network(
+          src,
+          fit: BoxFit.fill,
+        )
+      ],
+    );
   }
 }

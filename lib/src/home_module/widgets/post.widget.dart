@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../core/circleSize.dart';
 
@@ -81,16 +82,25 @@ class PostWidget extends StatelessWidget {
                   // visualDensity: VisualDensity.compact,
                   onPressed: () {},
                   // icon: const Icon(Iconsax.heart),
-                  icon: Icon(Icons.star),
+                  icon: const FaIcon(
+                    FontAwesomeIcons.heart,
+                    size: 20,
+                  ),
                 ),
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.star),
+                  icon: const FaIcon(
+                    FontAwesomeIcons.comment,
+                    size: 20,
+                  ),
                   // icon: const Icon(Iconsax.message),
                 ),
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.star),
+                  icon: const FaIcon(
+                    FontAwesomeIcons.paperPlane,
+                    size: 20,
+                  ),
                   // icon: const Icon(Iconsax.send_2),
                 ),
               ],

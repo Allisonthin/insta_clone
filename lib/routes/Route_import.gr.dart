@@ -36,7 +36,7 @@ abstract class $AppRouter extends _i9.RootStackRouter {
     WatchReelRoute.name: (routeData) {
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i2.WatchReelPage(),
+        child: _i2.WatchReelPage(),
       );
     },
     ReelSearchRoute.name: (routeData) {
