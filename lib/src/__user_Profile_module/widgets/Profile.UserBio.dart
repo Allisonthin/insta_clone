@@ -9,7 +9,7 @@ class UserBio extends StatefulWidget {
 }
 
 class _UserBioState extends State<UserBio> {
-  CollectionReference _referrencingUserDataList =
+  final CollectionReference _referrencingUserDataList =
       FirebaseFirestore.instance.collection("Users");
 
   late Stream<QuerySnapshot> streamUserData;
@@ -39,8 +39,8 @@ class _UserBioState extends State<UserBio> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(documentSnapshot[1]["username"]),
-                Text(documentSnapshot[1]["bio"]),
+                Text(documentSnapshot[0]["username"]),
+                Text(documentSnapshot[0]["bio"]),
               ],
             ),
           );

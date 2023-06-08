@@ -10,12 +10,28 @@ class Gallery extends StatefulWidget {
 }
 
 class _GalleryState extends State<Gallery> {
+  ScrollController scrollController1 = ScrollController();
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 10,
-      shrinkWrap: true,
-      children: [],
+    return SingleChildScrollView(
+      child: GridView.count(
+        controller: scrollController1,
+        crossAxisCount: 3,
+        shrinkWrap: true,
+        children: [
+          for (int i = 0; i < 10; i++)
+            Container(
+              margin: EdgeInsets.only(
+                right: 2,
+                top: 2,
+              ),
+              child: Image.network(
+                "https://source.unsplash.com/random/?bird",
+                fit: BoxFit.cover,
+              ),
+            )
+        ],
+      ),
     );
   }
 }

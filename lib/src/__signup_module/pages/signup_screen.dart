@@ -226,9 +226,8 @@ class _SignupScreenState extends State<SignupScreen> {
                           bio: _bioTextFieldController.text,
                           file: _image!,
                         );
+                        print(result);
                       }
-
-                      // print(result);
                     },
                     child: Container(
                       width: double.infinity,

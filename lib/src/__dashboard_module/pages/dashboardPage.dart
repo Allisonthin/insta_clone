@@ -12,12 +12,12 @@ class DashBoardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
-      routes: const [
-        HomeScreenRoute(),
-        ReelSearchRoute(),
-        UploadReelRoute(),
+      routes: [
+        const HomeScreenRoute(),
+        const ReelSearchRoute(),
+        const UploadReelRoute(),
         WatchReelRoute(),
-        UserProfileRoute(),
+        const UserProfileRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
         return BottomNavigationBar(

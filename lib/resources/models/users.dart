@@ -3,7 +3,7 @@ class User {
   final String uid;
   final String username;
   final String bio;
-  final String photourl;
+  // final String photourl;
   final List followers;
   final List following;
 
@@ -12,7 +12,7 @@ class User {
     required this.uid,
     required this.username,
     required this.bio,
-    required this.photourl,
+    // required this.photourl,
     required this.followers,
     required this.following,
   });
@@ -22,7 +22,7 @@ class User {
         "uid": uid,
         "email": email,
         "bio": bio,
-        "photourl": photourl,
+        // "photourl": photourl,
         "followers": followers,
         "following": following,
       };

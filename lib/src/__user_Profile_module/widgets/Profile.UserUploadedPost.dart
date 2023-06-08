@@ -34,7 +34,7 @@ class _UserUploadedPostState extends State<UserUploadedPost>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SingleChildScrollView(
       child: DefaultTabController(
         length: 3,
         child: Column(
@@ -61,7 +61,7 @@ class _UserUploadedPostState extends State<UserUploadedPost>
             Container(
               height: 1000, //height of TabBarView
               decoration: BoxDecoration(
-                  color: Colors.amber,
+                  // color: Colors.amber,
                   border:
                       Border(top: BorderSide(color: Colors.grey, width: 0.5))),
               child: const TabBarView(

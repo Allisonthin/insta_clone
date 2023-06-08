@@ -1,6 +1,8 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:insta_clone/routes/Route_import.gr.dart';
 
 class ProfileEdit extends StatelessWidget {
   ProfileEdit({super.key});
@@ -16,7 +18,9 @@ class ProfileEdit extends StatelessWidget {
           width: buttonWidth,
           height: buttonHeight,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              context.router.navigate(const EditProfileRoute());
+            },
             child: const Text("Edit Profile"),
           ),
         ),

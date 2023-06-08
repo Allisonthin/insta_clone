@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:insta_clone/routes/Route_import.gr.dart';
+import 'package:insta_clone/src/__dashboard_module/pages/dashboardPage.dart';
 import 'package:insta_clone/src/_login_module/widgets/form_Widget.dart';
 
 import '../../../resources/auth_methods.dart';
@@ -32,10 +34,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       .then((value) {
                     if (value == "successfully login") {
                       showShackBar(value, context);
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomeScreenPage()));
+                      context.router.push(const DashBoardRoute());
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => const DashBoardPage()));
                     } else {
                       showShackBar(value, context);
                     }

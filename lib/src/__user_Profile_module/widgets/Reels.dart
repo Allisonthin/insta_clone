@@ -10,8 +10,29 @@ class Reels extends StatefulWidget {
 }
 
 class _ReelsState extends State<Reels> {
+  ScrollController scrollController2 = ScrollController();
+
   @override
   Widget build(BuildContext context) {
-    return Container(child: Center(child: Text("reels")));
+    return SingleChildScrollView(
+      child: GridView.count(
+        controller: scrollController2,
+        crossAxisCount: 3,
+        shrinkWrap: true,
+        children: [
+          for (int i = 0; i < 10; i++)
+            Container(
+              margin: EdgeInsets.only(
+                right: 2,
+                top: 2,
+              ),
+              child: Image.network(
+                "https://source.unsplash.com/random/?group",
+                fit: BoxFit.cover,
+              ),
+            )
+        ],
+      ),
+    );
   }
 }

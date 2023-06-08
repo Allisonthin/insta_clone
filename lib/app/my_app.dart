@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:insta_clone/core/Color.dart';
 
 import '../routes/Route_import.dart';
-import '../src/Reels_Modules/pages/WatchReel.dart';
 
 class MyApp extends StatelessWidget {
   final _approute = AppRouter();

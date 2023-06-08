@@ -2,12 +2,13 @@ import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:insta_clone/resources/models/users.dart' as model;
-import 'package:insta_clone/resources/storage_methods.dart';
 
 class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final CollectionReference _firestore =
+      FirebaseFirestore.instance.collection("Users");
 
   // for signup methods
   Future<String> signUpUser({
@@ -28,28 +29,29 @@ class AuthMethods {
 
         // print("userid is ${cred.user!.uid}");
 
-        String photoUrl = await StorageMethods()
-            .uploadImageToStorage("profilePic", file, false);
-
+        // String photoUrl = await StorageMethods()
+        //     .uploadImageToStorage("profilePic", file, false);
+        // print("mddilt");
         model.User user = model.User(
             email: email,
             uid: cred.user!.uid,
             username: username,
             bio: bio,
-            photourl: photoUrl,
+            // photourl: photoUrl,
             followers: [],
             following: []);
 
         //adding user detail in firestore database
         await _firestore
-            .collection("Users")
-            .doc(cred.user!.uid)
+            .doc(cred.user!.email)
+            // .doc("my_id")
             .set(user.toJson());
+        debugPrint('signin');
 
         res = "success";
       }
     } catch (err) {
-      res = "error occured";
+      res = '$err';
     }
     return res;
   }
@@ -78,5 +80,20 @@ class AuthMethods {
       res = "login error";
     }
     return res;
+  }
+
+  Future<void> Updata_database(
+      {required String username, required String bio}) async {
+    final docuser = _firestore.doc(_auth.currentUser!.email);
+
+    docuser.update({
+      "username": username,
+      "bio": bio,
+    });
+  }
+
+  Future<void> signOut() async {
+    _auth.signOut();
+    print("signout");
   }
 }

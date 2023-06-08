@@ -10,8 +10,28 @@ class IgTv extends StatefulWidget {
 }
 
 class _IgTvState extends State<IgTv> {
+  ScrollController scrollController2 = ScrollController();
   @override
   Widget build(BuildContext context) {
-    return Container(child: Center(child: Text("instagram")));
+    return SingleChildScrollView(
+      child: GridView.count(
+        controller: scrollController2,
+        crossAxisCount: 3,
+        shrinkWrap: true,
+        children: [
+          for (int i = 0; i < 10; i++)
+            Container(
+              margin: EdgeInsets.only(
+                right: 2,
+                top: 2,
+              ),
+              child: Image.network(
+                "https://source.unsplash.com/random/?animal",
+                fit: BoxFit.cover,
+              ),
+            )
+        ],
+      ),
+    );
   }
 }
