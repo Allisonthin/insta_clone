@@ -41,7 +41,7 @@ dependencies:
   firebase_storage: ^11.0.15
   flutter_svg: ^2.0.4
   image_picker: ^0.8.7
-  shared_preferences: ^2.0.20
+
   
   # : ^10.4.0
   dropdown_button2: ^2.0.0
@@ -50,6 +50,8 @@ dependencies:
   auto_route: ^6.1.0
   flutter_card_swiper: ^4.1.3
   font_awesome_flutter: ^10.4.0
+  shared_preferences: ^2.1.2
+  path_provider: ^2.0.15
   
 
 dev_dependencies:

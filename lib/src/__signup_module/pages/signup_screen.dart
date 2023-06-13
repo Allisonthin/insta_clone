@@ -219,13 +219,16 @@ class _SignupScreenState extends State<SignupScreen> {
                   InkWell(
                     onTap: () async {
                       if (_formkey.currentState!.validate()) {
-                        String result = await AuthMethods().signUpUser(
-                          username: _usernameTextFieldController.text,
-                          email: _emailTextFieldController.text,
-                          password: _passTextFieldController.text,
-                          bio: _bioTextFieldController.text,
-                          file: _image!,
-                        );
+                        String result = await AuthMethods()
+                            .signUpUser(
+                              username: _usernameTextFieldController.text,
+                              email: _emailTextFieldController.text,
+                              password: _passTextFieldController.text,
+                              bio: _bioTextFieldController.text,
+                              file: _image!,
+                            )
+                            .then((value) =>
+                                showShackBar("signup Successfully", context));
                         print(result);
                       }
                     },

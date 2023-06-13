@@ -53,7 +53,7 @@ abstract class $AppRouter extends _i10.RootStackRouter {
     UploadReelRoute.name: (routeData) {
       return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i4.UploadReelPage(),
+        child: _i4.UploadReelPage(),
       );
     },
     LoginScreen.name: (routeData) {

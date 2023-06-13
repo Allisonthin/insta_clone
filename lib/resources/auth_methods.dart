@@ -4,11 +4,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:insta_clone/resources/models/users.dart' as model;
+import 'package:insta_clone/resources/sharedPref.dart';
+import 'package:insta_clone/resources/storage_methods.dart';
 
 class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final CollectionReference _firestore =
       FirebaseFirestore.instance.collection("Users");
+  final UserSharedPreference userSharedPreference = UserSharedPreference();
 
   // for signup methods
   Future<String> signUpUser({
@@ -22,22 +25,25 @@ class AuthMethods {
     String res = "Some error occurred";
 
     try {
-      if (email.isNotEmpty || password.isNotEmpty || username.isNotEmpty) {
+      if (email.isNotEmpty ||
+          password.isNotEmpty ||
+          username.isNotEmpty ||
+          file.isNotEmpty) {
         //register user
         UserCredential cred = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
 
         // print("userid is ${cred.user!.uid}");
 
-        // String photoUrl = await StorageMethods()
-        //     .uploadImageToStorage("profilePic", file, false);
+        String photoUrl = await StorageMethods()
+            .uploadImageToStorage("profilePic", file, false);
         // print("mddilt");
         model.User user = model.User(
             email: email,
             uid: cred.user!.uid,
             username: username,
             bio: bio,
-            // photourl: photoUrl,
+            photourl: photoUrl,
             followers: [],
             following: []);
 
@@ -47,6 +53,7 @@ class AuthMethods {
             // .doc("my_id")
             .set(user.toJson());
         debugPrint('signin');
+        UserSharedPreference.setValue(email: email, username: username);
 
         res = "success";
       }
