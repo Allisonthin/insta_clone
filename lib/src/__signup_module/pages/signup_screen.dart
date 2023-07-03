@@ -228,7 +228,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               file: _image!,
                             )
                             .then((value) =>
-                                showShackBar("signup Successfully", context));
+                                showShackBar("signup $value", context));
                         print(result);
                       }
                     },

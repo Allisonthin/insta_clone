@@ -3,9 +3,16 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../core/circleSize.dart';
 
-class PostWidget extends StatelessWidget {
-  const PostWidget({super.key});
+class PostWidget extends StatefulWidget {
+  const PostWidget({super.key, required this.img});
+  final String img;
 
+  @override
+  State<PostWidget> createState() => _PostWidgetState();
+}
+
+class _PostWidgetState extends State<PostWidget> {
+  static bool islike = false;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -66,7 +73,7 @@ class PostWidget extends StatelessWidget {
         SizedBox(
           height: 550,
           child: Image.network(
-            "https://source.unsplash.com/random/?post",
+            widget.img,
             fit: BoxFit.fill,
           ),
         ),
@@ -80,12 +87,23 @@ class PostWidget extends StatelessWidget {
               children: [
                 IconButton(
                   // visualDensity: VisualDensity.compact,
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      islike = !islike;
+                    });
+                  },
+
                   // icon: const Icon(Iconsax.heart),
-                  icon: const FaIcon(
-                    FontAwesomeIcons.heart,
-                    size: 20,
-                  ),
+                  icon: islike == false
+                      ? const FaIcon(
+                          FontAwesomeIcons.heart,
+                          size: 20,
+                        )
+                      : const FaIcon(
+                          FontAwesomeIcons.solidHeart,
+                          size: 20,
+                          color: Colors.red,
+                        ),
                 ),
                 IconButton(
                   onPressed: () {},

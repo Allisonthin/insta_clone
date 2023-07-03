@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:insta_clone/app/my_app.dart';
 import 'package:insta_clone/resources/sharedPref.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'firebase_options.dart';
 
 Future main() async {
@@ -24,6 +27,10 @@ Future main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  var email = prefs.getString("email");
+  log(email!);
 
   await UserSharedPreference.init();
   runApp(MyApp());

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:insta_clone/resources/auth_methods.dart';
 import 'package:insta_clone/routes/Route_import.gr.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 @RoutePage()
 class EditProfilePage extends StatefulWidget {
@@ -105,6 +106,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 await authMethods.signOut().whenComplete(() {
                   context.router.replaceAll([const LoginScreen()]);
                 });
+                SharedPreferences pref = await SharedPreferences.getInstance();
+                pref.remove("email");
+                pref.remove("username");
               },
               child: const Text("log out")),
         ]),

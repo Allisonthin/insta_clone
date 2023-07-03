@@ -9,7 +9,6 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i10;
-import 'package:flutter/material.dart' as _i11;
 import 'package:insta_clone/src/__dashboard_module/pages/dashboardPage.dart'
     as _i6;
 import 'package:insta_clone/src/__signup_module/pages/signup_screen.dart'
@@ -37,11 +36,9 @@ abstract class $AppRouter extends _i10.RootStackRouter {
       );
     },
     WatchReelRoute.name: (routeData) {
-      final args = routeData.argsAs<WatchReelRouteArgs>(
-          orElse: () => const WatchReelRouteArgs());
       return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i2.WatchReelPage(key: args.key),
+        child: const _i2.WatchReelPage(),
       );
     },
     ReelSearchRoute.name: (routeData) {
@@ -53,7 +50,7 @@ abstract class $AppRouter extends _i10.RootStackRouter {
     UploadReelRoute.name: (routeData) {
       return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i4.UploadReelPage(),
+        child: const _i4.UploadReelPage(),
       );
     },
     LoginScreen.name: (routeData) {
@@ -105,31 +102,16 @@ class HomeScreenRoute extends _i10.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.WatchReelPage]
-class WatchReelRoute extends _i10.PageRouteInfo<WatchReelRouteArgs> {
-  WatchReelRoute({
-    _i11.Key? key,
-    List<_i10.PageRouteInfo>? children,
-  }) : super(
+class WatchReelRoute extends _i10.PageRouteInfo<void> {
+  const WatchReelRoute({List<_i10.PageRouteInfo>? children})
+      : super(
           WatchReelRoute.name,
-          args: WatchReelRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'WatchReelRoute';
 
-  static const _i10.PageInfo<WatchReelRouteArgs> page =
-      _i10.PageInfo<WatchReelRouteArgs>(name);
-}
-
-class WatchReelRouteArgs {
-  const WatchReelRouteArgs({this.key});
-
-  final _i11.Key? key;
-
-  @override
-  String toString() {
-    return 'WatchReelRouteArgs{key: $key}';
-  }
+  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
 }
 
 /// generated route for

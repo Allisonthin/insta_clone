@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -11,13 +13,14 @@ class DashBoardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log("DashboARD");
     return AutoTabsScaffold(
-      routes: [
-        const HomeScreenRoute(),
-        const ReelSearchRoute(),
-        const UploadReelRoute(),
+      routes: const [
+        HomeScreenRoute(),
+        ReelSearchRoute(),
+        UploadReelRoute(),
         WatchReelRoute(),
-        const UserProfileRoute(),
+        UserProfileRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
         return BottomNavigationBar(

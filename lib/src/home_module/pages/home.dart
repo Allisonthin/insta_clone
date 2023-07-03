@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:insta_clone/src/home_module/widgets/Post.Suggest.dart';
+import 'package:insta_clone/src/home_module/widgets/post.widget.dart';
 
 import '../../../core/Color.dart';
 import '../logic/uploadedReelList.dart';
-import '../widgets/Post.Suggest.dart';
 import '../widgets/Post.Title.dart';
-import '../widgets/post.widget.dart';
 
 @RoutePage()
 class HomeScreenPage extends StatefulWidget {
@@ -39,23 +39,22 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: SingleChildScrollView(
           child: Column(
-            children: const [
-              ReelList(),
-              SizedBox(
+            children: [
+              const ReelList(),
+              const SizedBox(
                 height: 10,
               ),
-              PostWidget(),
-              SizedBox(
-                height: 10,
-              ),
-              SuggestedReel(),
-              SizedBox(
-                height: 10,
-              ),
-              PostWidget(),
-              SizedBox(
-                height: 10,
-              ),
+              ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return index % 4 == 0 && index != 0
+                      ? const SuggestedReel()
+                      : const PostWidget(
+                          img: "https://source.unsplash.com/random/?fruits");
+                },
+              )
             ],
           ),
         ),

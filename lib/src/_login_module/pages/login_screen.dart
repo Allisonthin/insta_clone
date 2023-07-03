@@ -1,12 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:insta_clone/routes/Route_import.gr.dart';
-import 'package:insta_clone/src/__dashboard_module/pages/dashboardPage.dart';
 import 'package:insta_clone/src/_login_module/widgets/form_Widget.dart';
 
 import '../../../resources/auth_methods.dart';
 import '../../../utils/utils.dart';
-import '../../home_module/pages/home.dart';
 
 @RoutePage()
 class LoginScreen extends StatefulWidget {
