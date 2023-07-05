@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:insta_clone/routes/Route_import.gr.dart';
 import 'package:insta_clone/src/home_module/widgets/Post.Suggest.dart';
 import 'package:insta_clone/src/home_module/widgets/post.widget.dart';
 
@@ -30,7 +31,9 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
           ),
           IconButton(
             icon: const FaIcon(FontAwesomeIcons.facebookMessenger),
-            onPressed: () {},
+            onPressed: () {
+              context.router.navigate(const MessengerRoute());
+            },
           ),
         ],
       ),

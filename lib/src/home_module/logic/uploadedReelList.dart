@@ -28,26 +28,31 @@ class _ReelListState extends State<ReelList> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 4),
                     child: Column(
-                      children: const [
-                        CircleAvatar(
-                          radius: 23.5,
-                          backgroundColor: Colors.red,
-                          child: CircleAvatar(
-                            radius: 22,
-                            backgroundColor: Colors.black,
-                            child: CircleAvatar(
-                              backgroundColor: Colors.amber,
-                              backgroundImage: NetworkImage(
-                                  "https://source.unsplash.com/random/?nature"),
-                              radius: 20,
-                              // child: Text("d"),
+                      children: [
+                        Stack(
+                          children: const [
+                            CircleAvatar(
+                              radius: 23.5,
+                              backgroundColor: Colors.red,
+                              child: CircleAvatar(
+                                radius: 22,
+                                backgroundColor: Colors.black,
+                                child: CircleAvatar(
+                                  backgroundColor: Colors.amber,
+                                  backgroundImage: NetworkImage(
+                                      "https://source.unsplash.com/random/?nature"),
+                                  radius: 20,
+                                  // child: Text("d"),
+                                ),
+                              ),
                             ),
-                          ),
+                          ],
+                          // child:
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 2,
                         ),
-                        Text(
+                        const Text(
                           "name",
                           style: TextStyle(fontSize: 8),
                         ),

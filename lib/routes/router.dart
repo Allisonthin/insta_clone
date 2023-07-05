@@ -17,5 +17,6 @@ class AppRouter extends $AppRouter {
     ]),
     AutoRoute(page: EditProfileRoute.page, path: "/editScreen"),
     AutoRoute(page: LoginScreen.page, path: "/loginScreen"),
+    AutoRoute(page: MessengerRoute.page, path: "/messenger"),
   ];
 }
